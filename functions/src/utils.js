@@ -1,15 +1,11 @@
-import { Configuration, OpenAIApi } from "openai";
-import { apiKey } from "./secrets.js";
+import { Configuration, OpenAIApi } from "openai"
+import { apiKey } from "./secrets.js"
 
 const configuration = new Configuration({
   apiKey: apiKey,
 });
 
-const openai = new OpenAIApi(configuration);
-
-// const generatePrompt = (text) => {
-//   return `return the sentiment analysis of: ${text}.`;
-// };
+const openai = new OpenAIApi(configuration)
 
 export const getAnalysis = async (req, res) => {
   const {userInput} = req.body
@@ -20,7 +16,8 @@ export const getAnalysis = async (req, res) => {
     // prompt: generatePrompt(userInput),
     prompt: `return postive, negative or neutral sentiment analysis of: ${userInput}`,
     temperature: 1,
-  });
+  })
   //   const sentiment = response.data
-  res.send(response.data);
-};
+  console.log(response.data)
+  res.send(response.data)
+}
